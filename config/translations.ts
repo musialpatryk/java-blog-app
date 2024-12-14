@@ -1,4 +1,4 @@
-import {ITranslationConfig} from '../src/app/modules/translation/translation.interface';
+import {ITranslationConfig} from '../src/app/modules/translations/translations.interface';
 
 const PL = {
   key: 'pl',

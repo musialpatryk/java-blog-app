@@ -12,4 +12,4 @@ import { TranslatePipe } from './pipes/translate.pipe';
     TranslatePipe,
   ],
 })
-export class TranslationModule { }
+export class TranslationsModule { }

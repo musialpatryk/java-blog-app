@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TranslatePipe } from '../../modules/translation/pipes/translate.pipe';
+import { TranslatePipe } from '../../modules/translations/pipes/translate.pipe';
 
 @Component({
   selector: 'app-base-layout',

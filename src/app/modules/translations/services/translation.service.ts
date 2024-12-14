@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { TRANSLATION_CONFIG } from '../translation-config';
-import { ITranslationConfig, ITranslationLanguage } from '../translation.interface';
+import { ITranslationConfig, ITranslationLanguage } from '../translations.interface';
 
 @Injectable({
   providedIn: 'root',

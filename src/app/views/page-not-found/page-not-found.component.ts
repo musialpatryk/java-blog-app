@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { TranslationModule } from '../../modules/translation/translation.module';
+import { TranslationsModule } from '../../modules/translations/translations.module';
 
 @Component({
   selector: 'app-page-not-found',
   imports: [
-    TranslationModule,
+    TranslationsModule,
   ],
   templateUrl: './page-not-found.component.html',
 })
