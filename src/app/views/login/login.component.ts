@@ -5,7 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { TranslatePipe } from '../../modules/translations/pipes/translate.pipe';
 import { ValidationErrorsComponent } from '../../components/validation-errors/validation-errors.component';
 import { NgIf } from '@angular/common';
-import { LoggedOutLayoutComponent } from '../logged-out-layout/logged-out-layout.component';
+import { CardInCenterComponent } from '../../components/card-in-center/card-in-center.component';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +15,7 @@ import { LoggedOutLayoutComponent } from '../logged-out-layout/logged-out-layout
     ReactiveFormsModule,
     RouterLink,
     NgIf,
-    LoggedOutLayoutComponent,
+    CardInCenterComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

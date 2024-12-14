@@ -4,14 +4,14 @@ import { TranslatePipe } from '../../modules/translations/pipes/translate.pipe';
 import { UserService } from '../../modules/users/services/user.service';
 
 @Component({
-  selector: 'app-base-layout',
+  selector: 'app-logged-in-layout',
   imports: [
     RouterOutlet,
     TranslatePipe,
   ],
-  templateUrl: './base-layout.component.html',
+  templateUrl: './logged-in-layout.component.html',
 })
-export class BaseLayoutComponent {
+export class LoggedInLayoutComponent {
   constructor(
     private router: Router,
     private userService: UserService,
