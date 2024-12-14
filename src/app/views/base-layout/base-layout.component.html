@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container d-flex justify-content-center">
+    <div class="w-100 d-lg-flex justify-content-between d-md-block">
+      <h2 class="text-light text-center fs-1">{{'APP_NAME' | translate}}</h2>
+
+      <div class="d-flex justify-content-between">
+        <div class="navbar-nav d-flex justify-content-around">
+        </div>
+
+        <div class="ml-4">
+          <button class="btn btn-danger btn-sm"
+                  style="margin-top: 0.3rem;"
+                  type="button">
+            {{'LOGOUT' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <router-outlet></router-outlet>
+</div>

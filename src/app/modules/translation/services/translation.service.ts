@@ -6,9 +6,8 @@ import { ITranslationConfig, ITranslationLanguage } from '../translation.interfa
   providedIn: 'root',
 })
 export class TranslationService {
-  private readonly TRANSLATION_NOT_AVAILABLE: string = 'No translation available';
-
   private currentLanguage: ITranslationLanguage | null = null;
+
   constructor(
     @Inject(TRANSLATION_CONFIG) private translationConfig: ITranslationConfig,
   ) {
@@ -32,9 +31,13 @@ export class TranslationService {
       (translation) => translation.key === key,
     );
     if (!translation) {
-      return this.TRANSLATION_NOT_AVAILABLE;
+      return this.getPlaceHolder(key);
     }
 
     return translation.value
+  }
+
+  private getPlaceHolder(key: string): string {
+    return key.replaceAll('_', ' ').toLowerCase();
   }
 }
