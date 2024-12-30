@@ -7,14 +7,22 @@
 
       <div class="d-flex justify-content-between">
         <div class="navbar-nav d-flex justify-content-between w-100">
-          <a class="nav-link"
+          <a class="nav-link align-content-center"
              routerLink=""
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact: true}">
             {{'MAIN' | translate}}
           </a>
-          <a class="nav-link" routerLink="login" routerLinkActive="active">{{'LOGIN' | translate}}</a>
-          <a class="nav-link" routerLink="register" routerLinkActive="active">{{'REGISTER' | translate}}</a>
+          <a class="nav-link align-content-center"
+             routerLink="login"
+             routerLinkActive="active">
+            {{'LOGIN' | translate}}
+          </a>
+          <a class="nav-link align-content-center"
+             routerLink="register"
+             routerLinkActive="active">
+            {{'REGISTER' | translate}}
+          </a>
         </div>
       </div>
     </div>
