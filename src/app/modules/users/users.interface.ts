@@ -5,3 +5,8 @@ export interface IUser {
   bio: string;
   token: string;
 }
+
+export interface INewUser {
+  login: string;
+  password: string;
+}

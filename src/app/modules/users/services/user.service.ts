@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { IUser } from '../users.interface';
+import { Observable, of, tap } from 'rxjs';
+import { INewUser, IUser } from '../users.interface';
 import { UserRepository } from '../repositories/user.repository';
 
 @Injectable({
@@ -15,14 +15,29 @@ export class UserService {
   }
 
   login(login: string, password: string): Observable<IUser> {
+    if (this.user) {
+      return of(this.user);
+    }
+
     return this.userRepository.login(login, password)
       .pipe(
         tap((user) => this.store(user)),
       );
   }
 
+  register({ login, password }: INewUser): Observable<void> {
+    return this.userRepository.register(login, password)
+      .pipe(
+        tap(() => this.logout()),
+      );
+  }
+
   private store(user: IUser): void {
     this.user = user;
+  }
+
+  getToken(): string | undefined {
+    return this.user?.token;
   }
 
   logout(): void {

@@ -3,6 +3,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { LoggedInLayoutComponent } from './views/logged-in-layout/logged-in-layout.component';
 import { LoginComponent } from './views/login/login.component';
 import { LoggedOutLayoutComponent } from './views/logged-out-layout/logged-out-layout.component';
+import { RegisterComponent } from './views/register/register.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
       {
         path: '**',
