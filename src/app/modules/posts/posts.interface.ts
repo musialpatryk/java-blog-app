@@ -1,0 +1,17 @@
+export interface IAuthor {
+  id: number;
+  login: string;
+}
+
+export interface IRawPost {
+  id: number;
+  author: IAuthor;
+  title: string;
+  content: string;
+  active: boolean;
+}
+
+export interface IPost extends IRawPost {
+  isEditable: boolean;
+}
+

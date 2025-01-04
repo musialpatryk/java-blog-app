@@ -40,6 +40,10 @@ export class UserService {
     return this.user?.token;
   }
 
+  getCurrentUser(): IUser | null {
+    return this.user ? { ...this.user } : null;
+  }
+
   logout(): void {
     this.user = null;
   }

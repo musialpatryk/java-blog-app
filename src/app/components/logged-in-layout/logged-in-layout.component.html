@@ -5,6 +5,12 @@
 
       <div class="d-flex justify-content-between">
         <div class="navbar-nav d-flex justify-content-around">
+          <a class="nav-link align-content-center"
+             routerLink="/app"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{exact: true}">
+            {{'MAIN' | translate}}
+          </a>
         </div>
 
         <div class="ml-4 align-content-center">

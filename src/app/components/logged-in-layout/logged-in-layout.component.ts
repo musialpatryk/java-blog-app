@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TranslatePipe } from '../../modules/translations/pipes/translate.pipe';
 import { UserService } from '../../modules/users/services/user.service';
 
@@ -8,6 +8,8 @@ import { UserService } from '../../modules/users/services/user.service';
   imports: [
     RouterOutlet,
     TranslatePipe,
+    RouterLink,
+    RouterLinkActive,
   ],
   templateUrl: './logged-in-layout.component.html',
 })

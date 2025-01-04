@@ -4,12 +4,17 @@ import { LoggedInLayoutComponent } from './components/logged-in-layout/logged-in
 import { LoginComponent } from './views/login/login.component';
 import { LoggedOutLayoutComponent } from './components/logged-out-layout/logged-out-layout.component';
 import { RegisterComponent } from './views/register/register.component';
+import { PostsComponent } from './views/posts/posts.component';
 
 export const routes: Routes = [
   {
     path: 'app',
     component: LoggedInLayoutComponent,
     children: [
+      {
+        path: '',
+        component: PostsComponent,
+      },
       {
         path: '**',
         component: PageNotFoundComponent,
@@ -22,7 +27,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: PageNotFoundComponent,
+        component: PostsComponent,
       },
       {
         path: 'login',
