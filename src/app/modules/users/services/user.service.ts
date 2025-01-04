@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
 import { INewUser, IUser } from '../users.interface';
 import { UserRepository } from '../repositories/user.repository';
+import { StorageService } from '../../../services/storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  private readonly USER_KEY = 'currentUser';
+
   private user: IUser | null = null;
 
   constructor(
     private userRepository: UserRepository,
+    private storageService: StorageService,
   ) {
   }
 
@@ -34,17 +38,33 @@ export class UserService {
 
   private store(user: IUser): void {
     this.user = user;
+    this.storageService.setItem(
+      this.USER_KEY,
+      user,
+    );
   }
 
   getToken(): string | undefined {
-    return this.user?.accessToken;
+    return this.getCurrentUser()?.accessToken;
   }
 
   getCurrentUser(): IUser | null {
-    return this.user ? { ...this.user } : null;
+    if (this.user) {
+      return { ...this.user };
+    }
+
+    const storedUser = this.storageService.getItem<IUser>(this.USER_KEY);
+    if (!storedUser) {
+      return null;
+    }
+
+    this.user = storedUser;
+
+    return { ...this.user };
   }
 
   logout(): void {
     this.user = null;
+    this.storageService.removeItem(this.USER_KEY);
   }
 }
