@@ -6,10 +6,12 @@ import {
 } from '@angular/common/http';
 import { UserService } from '../modules/users/services/user.service';
 import { inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 export abstract class AppInterceptors {
   private static readonly API_PATH = '/api/';
-  private static readonly AUTHORIZATION_PREFIX = 'Bearer ';
+  private static readonly MAIN_APP_URL = '/app';
+  private static readonly AUTHORIZATION_PREFIX = '';
 
   static appendPrefix: HttpInterceptorFn = (req, next) => {
       const modifiedRequest =  req.clone({
@@ -20,7 +22,8 @@ export abstract class AppInterceptors {
   }
 
   static sendAuthToken: HttpInterceptorFn = (req, next) => {
-    const userService = inject(UserService),
+    const  router = inject(Router),
+      userService = inject(UserService),
       modifiedRequest =  req.clone({
       headers: req.headers
         .set('Authorization', `${this.AUTHORIZATION_PREFIX}${userService.getToken()}`)
@@ -31,8 +34,14 @@ export abstract class AppInterceptors {
       .pipe(
         tap({
           error: (err: HttpErrorResponse) => {
-            if (err.status === HttpStatusCode.Unauthorized) {
-              userService.logout();
+            if (err.status !== HttpStatusCode.Unauthorized) {
+              return;
+            }
+
+            userService.logout();
+
+            if (router.url.startsWith(this.MAIN_APP_URL)) {
+              router.navigate([ '' ]);
             }
           },
         }),

@@ -4,7 +4,8 @@ export interface IUser {
   name: string;
   surname: string;
   bio: string;
-  token: string;
+  accessToken: string;
+  refreshToken: string;
 }
 
 export interface INewUser {

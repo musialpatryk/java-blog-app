@@ -37,7 +37,7 @@ export class UserService {
   }
 
   getToken(): string | undefined {
-    return this.user?.token;
+    return this.user?.accessToken;
   }
 
   getCurrentUser(): IUser | null {
