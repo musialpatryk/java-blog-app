@@ -1,4 +1,4 @@
-<div class="posts" *ngIf="posts?.length; else emptyPostsPlaceholder">
+<div class="posts d-flex flex-column gap-4" *ngIf="posts?.length; else emptyPostsPlaceholder">
   <app-post *ngFor="let post of posts"
             [post]="post">
   </app-post>
