@@ -16,6 +16,11 @@ export const routes: Routes = [
         component: PostsComponent,
       },
       {
+        path: 'my-posts',
+        component: PostsComponent,
+        data: { onlyCurrentUser: true },
+      },
+      {
         path: '**',
         component: PageNotFoundComponent,
       },
