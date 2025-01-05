@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PostRepository } from '../repositories/post-repository.service';
 import { map, Observable } from 'rxjs';
-import { IPost, IRawPost } from '../posts.interface';
+import { IEditPost, IPost, IRawPost } from '../posts.interface';
 import { UserService } from '../../users/services/user.service';
 import { IUser } from '../../users/users.interface';
 
@@ -40,5 +40,18 @@ export class PostService {
       ...rawPost,
       isEditable: currentUser?.id === rawPost.author.id,
     };
+  }
+
+  save(post: IEditPost): Observable<IPost> {
+    const currentUser = this.userService.getCurrentUser();
+
+    if (!currentUser) {
+      throw new Error('Cannot add post when user is not logged in!');
+    }
+
+    return this.postRepository.save(post)
+      .pipe(
+        map((rawPost) => this.convertRawPost(rawPost, currentUser)),
+      );
   }
 }

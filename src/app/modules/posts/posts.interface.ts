@@ -15,3 +15,5 @@ export interface IPost extends IRawPost {
   isEditable: boolean;
 }
 
+export type IEditPost = Partial<Pick<IPost, 'id' | 'title' | 'content' | 'active'>>;
+

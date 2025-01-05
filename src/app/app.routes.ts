@@ -6,6 +6,7 @@ import { LoggedOutLayoutComponent } from './components/logged-out-layout/logged-
 import { RegisterComponent } from './views/register/register.component';
 import { PostsComponent } from './views/posts/posts.component';
 import { PostDetailComponent } from './views/post-detail/post-detail.component';
+import { PostFormComponent } from './modules/posts/components/post-form/post-form.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,14 @@ export const routes: Routes = [
       {
         path: 'post-details/:postId',
         component: PostDetailComponent,
+      },
+      {
+        path: 'post-form/:postId',
+        component: PostFormComponent,
+      },
+      {
+        path: 'post-form',
+        component: PostFormComponent,
       },
       {
         path: '**',

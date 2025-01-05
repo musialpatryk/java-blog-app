@@ -12,6 +12,12 @@
             {{'MAIN' | translate}}
           </a>
           <a class="nav-link align-content-center"
+             routerLink="/app/post-form"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{exact: true}">
+            {{'ADD_POST' | translate}}
+          </a>
+          <a class="nav-link align-content-center"
              routerLink="/app/my-posts"
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact: true}">
