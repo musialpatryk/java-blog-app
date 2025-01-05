@@ -5,6 +5,7 @@ import { LoginComponent } from './views/login/login.component';
 import { LoggedOutLayoutComponent } from './components/logged-out-layout/logged-out-layout.component';
 import { RegisterComponent } from './views/register/register.component';
 import { PostsComponent } from './views/posts/posts.component';
+import { PostDetailComponent } from './views/post-detail/post-detail.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,10 @@ export const routes: Routes = [
         path: 'my-posts',
         component: PostsComponent,
         data: { onlyCurrentUser: true },
+      },
+      {
+        path: 'post-details/:postId',
+        component: PostDetailComponent,
       },
       {
         path: '**',

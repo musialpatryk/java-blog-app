@@ -1,6 +1,19 @@
 <div class="post card">
   <div class="card-body">
-    <h5 class="card-title">#{{post.id}} {{post.title}}</h5>
-    <p class="card-text">{{shortenedContent ? (post.content | short) : post.content}}</p>
+    <h5 class="card-title">
+      <ng-container *ngIf="removeLinkToDetails; else titleWithLink">
+        #{{post.id}} {{post.title}}
+      </ng-container>
+
+      <ng-template #titleWithLink>
+        <a class="link-dark text-decoration-none"
+           [routerLink]="['/app/post-details', post.id]"
+           routerLinkActive="active"
+           [routerLinkActiveOptions]="{exact: true}">
+          #{{post.id}} {{post.title}}
+        </a>
+      </ng-template>
+    </h5>
+    <p class="card-text">{{short ? (post.content | short) : post.content}}</p>
   </div>
 </div>
