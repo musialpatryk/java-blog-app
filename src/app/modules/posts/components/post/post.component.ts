@@ -1,8 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { IRawPost } from '../../posts.interface';
+import { IPost } from '../../posts.interface';
 import { ShortPipe } from '../../../../pipes/short.pipe';
 import { NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslatePipe } from '../../../translations/pipes/translate.pipe';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -12,10 +14,24 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     NgIf,
     RouterLink,
     RouterLinkActive,
+    TranslatePipe,
   ],
 })
 export class PostComponent {
-  @Input() post!: IRawPost;
+  @Input() post!: IPost;
   @Input() short = true;
   @Input() removeLinkToDetails = false;
+
+  constructor(
+    private postService: PostService,
+    private router: Router,
+  ) {
+  }
+
+  delete() {
+    this.postService.delete(this.post.id)
+      .subscribe(() => {
+        this.router.navigate([ '/app' ]);
+      });
+  }
 }

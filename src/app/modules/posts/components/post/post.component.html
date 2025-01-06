@@ -16,7 +16,22 @@
         </ng-template>
       </h5>
 
-      <h6>{{post.author.login}}</h6>
+      <div class="additional-info d-flex gap-2">
+        {{post.author.login}}
+
+        <div *ngIf="post.isEditable && !short" class="d-flex flex-row gap-1">
+          <a class="btn btn-outline-info btn-sm"
+             [routerLink]="['/app/post-form', post.id]">
+            {{'EDIT' | translate}}
+          </a>
+
+          <button type="button"
+                  (click)="delete()"
+                  class="btn btn-outline-danger btn-sm">
+            {{'DELETE' | translate}}
+          </button>
+        </div>
+      </div>
     </div>
     <p class="card-text">{{short ? (post.content | short) : post.content}}</p>
   </div>

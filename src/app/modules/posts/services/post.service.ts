@@ -54,4 +54,14 @@ export class PostService {
         map((rawPost) => this.convertRawPost(rawPost, currentUser)),
       );
   }
+
+  delete(postId: number): Observable<void> {
+    const currentUser = this.userService.getCurrentUser();
+
+    if (!currentUser) {
+      throw new Error('Cannot add post when user is not logged in!');
+    }
+
+    return this.postRepository.delete(postId);
+  }
 }

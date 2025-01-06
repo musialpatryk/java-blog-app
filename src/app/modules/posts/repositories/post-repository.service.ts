@@ -43,4 +43,10 @@ export class PostRepository {
       post,
     )
   }
+
+  delete(postId: number): Observable<void> {
+    return this.http.delete<void>(
+      `${this.POST_PATH}/${postId}`,
+    );
+  }
 }
