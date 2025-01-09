@@ -1,0 +1,13 @@
+<h3 class="mt-5">{{'POST_COMMENTS_LIST' | translate}}</h3>
+
+<div class="post-comments d-flex flex-column gap-4" *ngIf="postComments?.length; else emptyPostsPlaceholder">
+  <app-post-comment *ngFor="let postComment of postComments"
+            [postComment]="postComment">
+  </app-post-comment>
+</div>
+
+<ng-template #emptyPostsPlaceholder>
+  <div class="post-comments">
+    {{'NO_COMMENTS' | translate}}
+  </div>
+</ng-template>

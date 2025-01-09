@@ -3,3 +3,7 @@
           [short]="false"
           [removeLinkToDetails]="true">
 </app-post>
+
+<app-post-comment-list *ngIf="postComments$ | async as postComments"
+                       [postComments]="postComments">
+</app-post-comment-list>

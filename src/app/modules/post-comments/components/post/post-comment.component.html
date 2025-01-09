@@ -1,0 +1,17 @@
+<div class="post-comments card">
+  <div class="card-body">
+    <div class="card-title d-flex justify-content-between">
+      <small>{{postComment.author.login}}</small>
+
+      <div class="additional-info">
+        <button *ngIf="postComment.isEditable"
+                type="button"
+                (click)="delete()"
+                class="btn btn-outline-danger btn-sm">
+          {{'DELETE' | translate}}
+        </button>
+      </div>
+    </div>
+    <p class="card-text">{{postComment.content}}</p>
+  </div>
+</div>
