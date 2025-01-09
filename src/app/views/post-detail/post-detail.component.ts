@@ -6,7 +6,9 @@ import { PostComponent } from '../../modules/posts/components/post/post.componen
 import { AsyncPipe, NgIf } from '@angular/common';
 import { IPostComment } from '../../modules/post-comments/post-comments.interface';
 import { PostCommentsService } from '../../modules/post-comments/services/post-comments.service';
-import { PostCommentListComponent } from '../../modules/post-comments/components/post-list/post-comment-list.component';
+import {
+  PostCommentListComponent,
+} from '../../modules/post-comments/components/post-comment-list/post-comment-list.component';
 
 @Component({
   selector: 'app-post-detail',
