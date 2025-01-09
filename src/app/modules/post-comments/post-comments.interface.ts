@@ -13,3 +13,8 @@ export interface IRawPostComment {
 export interface IPostComment extends IRawPostComment {
   isEditable: boolean;
 }
+
+export interface IEditPostComment {
+  postId: number;
+  content: string;
+}

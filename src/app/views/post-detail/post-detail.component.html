@@ -1,9 +1,13 @@
-<app-post *ngIf="post$ | async as post"
-          [post]="post"
-          [short]="false"
-          [removeLinkToDetails]="true">
-</app-post>
+<ng-container *ngIf="post$ | async as post">
+  <app-post [post]="post"
+            [short]="false"
+            [removeLinkToDetails]="true">
+  </app-post>
 
-<app-post-comment-list *ngIf="postComments$ | async as postComments"
-                       [postComments]="postComments">
-</app-post-comment-list>
+  <app-post-comment-list *ngIf="postComments$ | async as postComments"
+                         [postComments]="postComments">
+  </app-post-comment-list>
+
+  <app-post-comment-form [post]="post">
+  </app-post-comment-form>
+</ng-container>

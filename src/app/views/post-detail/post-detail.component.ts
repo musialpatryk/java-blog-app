@@ -9,6 +9,9 @@ import { PostCommentsService } from '../../modules/post-comments/services/post-c
 import {
   PostCommentListComponent,
 } from '../../modules/post-comments/components/post-comment-list/post-comment-list.component';
+import {
+  PostCommentFormComponent,
+} from '../../modules/post-comments/components/post-comment-form/post-comment-form.component';
 
 @Component({
   selector: 'app-post-detail',
@@ -17,6 +20,7 @@ import {
     AsyncPipe,
     NgIf,
     PostCommentListComponent,
+    PostCommentFormComponent,
   ],
   templateUrl: './post-detail.component.html',
 })

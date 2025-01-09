@@ -50,4 +50,13 @@ export class PostCommentsService {
   delete(id: number): Observable<void> {
     return this.postCommentsRepository.delete(id);
   }
+
+  save(postId: number, content: string): Observable<IPostComment> {
+    const currentUser = this.userService.getCurrentUser();
+
+    return this.postCommentsRepository.save({ postId, content })
+      .pipe(
+        map((rawPostComment) => this.convertRawPostComment(rawPostComment, currentUser)),
+      );
+  }
 }

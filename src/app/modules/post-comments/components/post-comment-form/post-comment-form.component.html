@@ -1,0 +1,20 @@
+<form (ngSubmit)="save()"
+      class="post-comments-form card mt-3">
+  <div class="card-body">
+    <p class="card-text">
+          <textarea [(ngModel)]="content"
+                    type="text"
+                    class="form-control"
+                    name="content"
+                    rows="2"
+                    [placeholder]="'POST_COMMENT_CONTENT' | translate"></textarea>
+    </p>
+  </div>
+
+  <div class="card-footer d-flex justify-content-end">
+    <button type="submit"
+            class="btn btn-success">
+      {{'SAVE' | translate}}
+    </button>
+  </div>
+</form>
