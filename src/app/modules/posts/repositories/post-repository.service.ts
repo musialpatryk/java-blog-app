@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IEditPost, IPost, IRawPost } from '../posts.interface';
+import { IUser } from '../../users/users.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -24,9 +25,14 @@ export class PostRepository {
     )
   }
 
-  getCurrentUserPosts(): Observable<IRawPost[]> {
+  getCurrentUserPosts(user: IUser): Observable<IRawPost[]> {
     return this.http.get<IRawPost[]>(
       this.POST_PATH,
+      {
+        params: {
+          authorId: user.id,
+        },
+      },
     )
   }
 

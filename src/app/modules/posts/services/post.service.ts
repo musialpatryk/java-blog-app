@@ -27,7 +27,11 @@ export class PostService {
   getPosts(onlyCurrentUser = false): Observable<IPost[]> {
     const currentUser = this.userService.getCurrentUser();
 
-    return (onlyCurrentUser ? this.postRepository.getCurrentUserPosts() : this.postRepository.getPosts())
+    return (
+      onlyCurrentUser && currentUser
+        ? this.postRepository.getCurrentUserPosts(currentUser)
+        : this.postRepository.getPosts()
+    )
       .pipe(
         map((rawPosts) => rawPosts.map(
           (rawPost) => this.convertRawPost(rawPost, currentUser)),

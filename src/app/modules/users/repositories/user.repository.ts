@@ -12,8 +12,8 @@ export class UserRepository {
   constructor(private http: HttpClient) {
   }
 
-  login(login: string, password: string): Observable<IUser> {
-    return this.http.post<IUser>(
+  login(login: string, password: string): Observable<{user: IUser, accessToken: string}> {
+    return this.http.post<{user: IUser, accessToken: string}>(
       `${this.AUTH_PATH}/login`,
       {
         login,

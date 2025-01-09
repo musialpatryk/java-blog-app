@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
+import { map, Observable, of, tap } from 'rxjs';
 import { INewUser, IUser } from '../users.interface';
 import { UserRepository } from '../repositories/user.repository';
 import { StorageService } from '../../../services/storage.service';
@@ -25,6 +25,12 @@ export class UserService {
 
     return this.userRepository.login(login, password)
       .pipe(
+        map((response) => {
+          return {
+            ...response.user,
+            accessToken: response.accessToken,
+          };
+        }),
         tap((user) => this.store(user)),
       );
   }
