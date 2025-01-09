@@ -12,3 +12,5 @@ export interface INewUser {
   login: string;
   password: string;
 }
+
+export type IEditUser = Pick<IUser, 'name' | 'surname' | 'bio'>;

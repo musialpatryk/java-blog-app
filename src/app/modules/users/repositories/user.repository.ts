@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from '../users.interface';
+import { IEditUser, IUser } from '../users.interface';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserRepository {
   private readonly AUTH_PATH = 'auth';
+  private readonly USER_PATH = 'users';
 
   constructor(private http: HttpClient) {
   }
@@ -29,6 +30,13 @@ export class UserRepository {
        login,
        password,
       },
+    );
+  }
+
+  updateCurrentUser(user: IEditUser): Observable<IEditUser> {
+    return this.http.put<IEditUser>(
+      this.USER_PATH,
+      user,
     );
   }
 }

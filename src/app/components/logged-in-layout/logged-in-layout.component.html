@@ -17,20 +17,50 @@
              [routerLinkActiveOptions]="{exact: true}">
             {{'ADD_POST' | translate}}
           </a>
-          <a class="nav-link align-content-center"
-             routerLink="/app/my-posts"
-             routerLinkActive="active"
-             [routerLinkActiveOptions]="{exact: true}">
-            {{'MY_POSTS' | translate}}
-          </a>
         </div>
 
         <div class="ml-4 align-content-center">
-          <button class="btn btn-danger btn-sm"
-                  type="button"
-                  (click)="logout()">
-            {{'LOGOUT' | translate}}
-          </button>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <button type="button"
+                        class="nav-link dropdown-toggle"
+                        id="dropdown-menu"
+                        data-bs-toggle="dropdown">
+                  {{currentUser.login}}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end"
+                    aria-labelledby="dropdown-menu">
+                  <li><h6 class="dropdown-header">{{currentUser.name}} {{currentUser.surname}}</h6></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <a class="dropdown-item"
+                       routerLink="/app/my-posts"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">
+                      {{'MY_POSTS' | translate}}
+                    </a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item"
+                       routerLink="/app/user-form"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">
+                      {{'EDIT_PROFILE' | translate}}
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <button type="button"
+                            (click)="logout()"
+                            class="dropdown-item">
+                      {{'LOGOUT' | translate}}
+                    </button>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

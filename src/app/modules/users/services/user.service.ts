@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, Observable, of, tap } from 'rxjs';
-import { INewUser, IUser } from '../users.interface';
+import { IEditUser, INewUser, IUser } from '../users.interface';
 import { UserRepository } from '../repositories/user.repository';
 import { StorageService } from '../../../services/storage.service';
 
@@ -72,5 +72,24 @@ export class UserService {
   logout(): void {
     this.user = null;
     this.storageService.removeItem(this.USER_KEY);
+  }
+
+  updateCurrentUser(user: IEditUser): Observable<IEditUser> {
+    const currentUser = this.user;
+    if (!currentUser) {
+      throw new Error('User not found');
+    }
+
+    return this.userRepository.updateCurrentUser(user)
+      .pipe(
+        tap((editedUser) => {
+          this.store({
+            ...currentUser,
+            bio: editedUser.bio,
+            name: editedUser.name,
+            surname: editedUser.surname,
+          });
+        }),
+      );
   }
 }

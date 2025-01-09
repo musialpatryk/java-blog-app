@@ -1,0 +1,39 @@
+<form  (ngSubmit)="save()"
+       class="post card">
+  <div class="card-body">
+    <h5 class="card-title text-center">
+      <input [(ngModel)]="user.name"
+             type="text"
+             class="form-control"
+             name="name"
+             [placeholder]="'USER_NAME' | translate"
+      />
+      <input [(ngModel)]="user.surname"
+             type="text"
+             class="form-control mt-2"
+             name="surname"
+             [placeholder]="'USER_SURNAME' | translate"
+      />
+    </h5>
+    <hr />
+    <div class="desc-container h-75">
+      <p class="card-text">
+          <textarea [(ngModel)]="user.bio"
+                    type="text"
+                    class="form-control"
+                    name="bio"
+                    rows="15"
+                    [placeholder]="'USER_BIO' | translate"></textarea>
+      </p>
+    </div>
+  </div>
+
+  <div class="card-footer d-flex justify-content-end">
+    <button type="submit"
+            class="btn btn-success">
+      {{'SAVE' | translate}}
+    </button>
+  </div>
+</form>
+
+
