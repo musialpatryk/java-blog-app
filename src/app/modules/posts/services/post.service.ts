@@ -1,27 +1,46 @@
 import { Injectable } from '@angular/core';
 import { PostRepository } from '../repositories/post-repository.service';
-import { map, Observable } from 'rxjs';
+import { concatMap, map, Observable, startWith, Subject } from 'rxjs';
 import { IEditPost, IPost, IRawPost } from '../posts.interface';
 import { UserService } from '../../users/services/user.service';
 import { IUser } from '../../users/users.interface';
+import { RateRepository } from '../repositories/rate-repository.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostService {
+  private reloadSubject = new Subject<void>();
+
   constructor(
     private postRepository: PostRepository,
+    private rateRepository: RateRepository,
     private userService: UserService,
   ) {
+  }
+
+  reload(): void {
+    this.reloadSubject.next();
   }
 
   getPost(postId: number): Observable<IPost> {
     const currentUser = this.userService.getCurrentUser();
 
+    return this.reloadSubject.asObservable()
+      .pipe(
+        startWith(undefined),
+        concatMap(() => this.resolvePost(postId, currentUser)),
+      )
+  }
+
+  private resolvePost(
+    postId: number,
+    currentUser: IUser | null,
+  ): Observable<IPost> {
     return this.postRepository.getPost(postId)
       .pipe(
         map((rawPost) => this.convertRawPost(rawPost, currentUser)),
-      )
+      );
   }
 
   getPosts(onlyCurrentUser = false): Observable<IPost[]> {
@@ -67,5 +86,9 @@ export class PostService {
     }
 
     return this.postRepository.delete(postId);
+  }
+
+  updateRating(post: IPost, rate: number): Observable<void> {
+    return this.rateRepository.update(post.id, rate);
   }
 }

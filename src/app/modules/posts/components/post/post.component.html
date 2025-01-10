@@ -3,16 +3,17 @@
     <div class="card-title d-flex justify-content-between">
       <h5>
         <ng-container *ngIf="removeLinkToDetails; else titleWithLink">
-          #{{post.id}} {{post.title}}
+          <span class="me-2">#{{post.id}} {{post.title}}</span> <app-rating [post]="post" [short]="short"></app-rating>
         </ng-container>
 
         <ng-template #titleWithLink>
-          <a class="link-dark"
+          <a class="link-dark me-2"
              [routerLink]="['/app/post-details', post.id]"
              routerLinkActive="active"
              [routerLinkActiveOptions]="{exact: true}">
             #{{post.id}} {{post.title}}
           </a>
+          <app-rating [post]="post" [short]="short"></app-rating>
         </ng-template>
       </h5>
 

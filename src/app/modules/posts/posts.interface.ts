@@ -9,6 +9,7 @@ export interface IRawPost {
   title: string;
   content: string;
   active: boolean;
+  rate: number;
 }
 
 export interface IPost extends IRawPost {

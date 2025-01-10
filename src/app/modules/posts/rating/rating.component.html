@@ -1,0 +1,19 @@
+<div *ngIf="edit && !short; else shortRating"
+      class="btn-group">
+  <button *ngFor="let rate of ratings"
+          (click)="save(rate)"
+          type="button"
+          class="btn"
+          [ngClass]="'btn-outline-' + (rate | rateColor)">
+    {{rate}}
+  </button>
+</div>
+
+<ng-template #shortRating>
+  <button (click)="edit = true"
+          type="button"
+          class="btn badge rounded-pill"
+          [ngClass]="'bg-' + (post.rate | rateColor)">
+    {{post.rate | number : '1.2-2'}}
+  </button>
+</ng-template>

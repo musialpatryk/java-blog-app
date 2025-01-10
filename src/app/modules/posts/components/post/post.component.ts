@@ -5,6 +5,7 @@ import { NgIf } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslatePipe } from '../../../translations/pipes/translate.pipe';
 import { PostService } from '../../services/post.service';
+import { RatingComponent } from '../../rating/rating.component';
 
 @Component({
   selector: 'app-post',
@@ -15,6 +16,7 @@ import { PostService } from '../../services/post.service';
     RouterLink,
     RouterLinkActive,
     TranslatePipe,
+    RatingComponent,
   ],
 })
 export class PostComponent {
