@@ -40,6 +40,7 @@ export class PostCommentFormComponent implements OnInit {
     this.postCommentService.save(this.post.id, this.content)
       .subscribe(() => {
         this.postCommentService.reload();
+        this.content = '';
       });
   }
 }
